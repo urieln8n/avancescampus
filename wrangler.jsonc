@@ -1,5 +1,5 @@
 {
   "name": "avancescampus",
   "compatibility_date": "2026-11-01",
-  "assets": { "directory": "./", "not_found_handling": "404-page" }
+  "assets": { "directory": "./public", "not_found_handling": "404-page" }
 }

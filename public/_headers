@@ -1,0 +1,10 @@
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Link: </sitemap.xml>; rel="sitemap", </llms.txt>; rel="describedby"
+
+/assets/*
+  Cache-Control: public, max-age=2592000
+
+/motor-3d/*
+  Cache-Control: public, max-age=604800

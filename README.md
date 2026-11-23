@@ -11,3 +11,13 @@ Para publicarla basta con subir el contenido de `public/` a la carpeta `public_h
 ## Cloudflare
 
 Se despliega como Worker de archivos estáticos (`wrangler.jsonc`). Cada push a `main` publica la web si el repo está conectado en Cloudflare → Workers & Pages → Import a repository.
+
+## AEO (que la encuentren ChatGPT, Perplexity, Claude y Gemini)
+
+- Todo el texto está en el HTML: los bots de IA no ejecutan JavaScript y lo leen entero.
+- `robots.txt` permite a todos los buscadores y asistentes de IA y declara `Content-Signal`.
+- `sitemap.xml`, `llms.txt` y `index.md` (versión en Markdown).
+- `src/worker.js`: si un agente pide `Accept: text/markdown`, recibe `index.md`.
+- Datos estructurados: WebSite, WebPage, LocalBusiness con sus productos y FAQPage.
+
+**Dominio:** está puesto `https://avancescampus.com/`. Si se usa otro, cambiarlo en `public/index.html`, `robots.txt`, `sitemap.xml` y `llms.txt`.

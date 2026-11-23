@@ -1,0 +1,25 @@
+# Avancés Campus — buscadores y asistentes de IA bienvenidos
+# Content-Signal: search = aparecer en buscadores; ai-input = usar la web para responder; ai-train = entrenar modelos
+User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+Allow: /
+
+# Buscadores y asistentes de IA (permitidos de forma explícita)
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: GPTBot
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: Google-Extended
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://avancescampus.com/sitemap.xml

@@ -7,3 +7,7 @@ Web de [avancescampus.es](https://avancescampus.es): avancés, sobreavancés y t
 - `assets/`: modelo 3D de la caravana, logo y póster.
 
 Para publicarla basta con subir estos archivos a la carpeta `public_html` del hosting.
+
+## Cloudflare
+
+Se despliega como Worker de archivos estáticos (`wrangler.jsonc`). Cada push a `main` publica la web si el repo está conectado en Cloudflare → Workers & Pages → Import a repository.

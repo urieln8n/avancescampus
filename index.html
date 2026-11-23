@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Avancés Campus — Avancés para caravana a medida en Barcelona</title>
+  <meta name="description" content="Fabricamos avancés, sobreavancés y tiendas cocina para caravana a medida en nuestro taller de Barcelona. PVC Trevira y armazón de acero galvanizado de 25 mm. Pide presupuesto por WhatsApp.">
+  <meta name="theme-color" content="#0e1512">
+  <link rel="canonical" href="https://avancescampus.es/">
+  <meta property="og:title" content="Avancés Campus — Avancés para caravana a medida">
+  <meta property="og:description" content="Taller propio en Barcelona. Avancés, sobreavancés y tiendas cocina hechos a la medida de tu caravana.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <link rel="icon" href="assets/marca.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.186.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.186.0/examples/jsm/",
+      "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.15.0/index.js",
+      "gsap/ScrollTrigger": "https://cdn.jsdelivr.net/npm/gsap@3.15.0/ScrollTrigger.js",
+      "lenis": "https://cdn.jsdelivr.net/npm/lenis@1.3.26/dist/lenis.mjs"
+    }
+  }
+  </script>
+
+  <!-- Datos estructurados: que Google y las IA entiendan quién es el negocio -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Avancés Campus",
+    "description": "Fabricantes de avancés, sobreavancés y tiendas cocina para caravana a medida, en PVC Trevira con armazón de acero galvanizado de 25 mm.",
+    "url": "https://avancescampus.es/",
+    "telephone": "+34632083624",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Carrer de Gavà, 67",
+      "postalCode": "08014",
+      "addressLocality": "Barcelona",
+      "addressRegion": "Barcelona",
+      "addressCountry": "ES"
+    },
+    "areaServed": "Cataluña",
+    "sameAs": ["https://www.facebook.com/CampusAvance", "https://www.instagram.com/avancescampus/"],
+    "makesOffer": [
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Avancé SCAR"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Avancé CAMPUS"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "Tienda cocina para camping"}}
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {"@type": "Question", "name": "¿El avancé se adapta a mi caravana?", "acceptedAnswer": {"@type": "Answer", "text": "Sí. Fabricamos cada avancé a la medida de tu caravana en nuestro taller de Barcelona."}},
+      {"@type": "Question", "name": "¿De qué material están hechos los avancés?", "acceptedAnswer": {"@type": "Answer", "text": "De PVC Trevira, que se limpia con facilidad, con armazón de acero galvanizado de 25 mm."}},
+      {"@type": "Question", "name": "¿Hacéis la entrega y el montaje?", "acceptedAnswer": {"@type": "Answer", "text": "Sí, entregamos o montamos tu avancé con puntualidad."}},
+      {"@type": "Question", "name": "¿Cuánto cuesta un avancé?", "acceptedAnswer": {"@type": "Answer", "text": "Depende del modelo y de la medida de tu caravana. Escríbenos por WhatsApp con la marca, el modelo y la medida y te pasamos presupuesto."}}
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="motor-3d/motor3d.css">
+  <style>
+    :root {
+      --m3d-fondo: #0e1512;
+      --m3d-texto: #f1f3ef;
+      --m3d-acento: #39b86f;
+      --m3d-sobre-acento: #0e1512;
+      --m3d-fuente: "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    }
+    .m3d-cabecera__marca img { height: 30px; width: auto; }
+    .m3d-cabecera__marca span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .m3d-intro img { width: min(340px, 70vw); height: auto; }
+
+    /* Pasos del pedido */
+    .ac-pasos { list-style: none; padding: 0; margin: 1.4rem 0 0; display: grid; gap: .8rem; counter-reset: paso; }
+    .ac-pasos li { counter-increment: paso; display: grid; grid-template-columns: 2.4rem 1fr; gap: .9rem; align-items: start;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: .9rem 1rem; }
+    .ac-pasos li::before { content: counter(paso); width: 2.4rem; height: 2.4rem; border-radius: 50%; display: grid; place-items: center;
+      background: var(--m3d-acento); color: var(--m3d-sobre-acento); font-weight: 800; }
+    .ac-pasos strong { display: block; margin-bottom: .15rem; }
+    .ac-pasos span { opacity: .78; font-size: .95rem; }
+
+    /* Formulario de presupuesto → WhatsApp */
+    .ac-form { display: grid; gap: .75rem; margin-top: 1.4rem; text-align: left;
+      background: rgba(14,21,18,.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,.1); border-radius: 18px; padding: 1.2rem; }
+    .ac-form .ac-fila { display: grid; grid-template-columns: 1fr 1fr; gap: .75rem; }
+    .ac-form label { display: grid; gap: .3rem; font-size: .85rem; font-weight: 600; opacity: .9; }
+    .ac-form input, .ac-form select { font: inherit; color: var(--m3d-texto); background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.16); border-radius: 10px; padding: .7rem .8rem; min-width: 0; }
+    .ac-form select option { color: #111; }
+    .ac-form input:focus, .ac-form select:focus { outline: 2px solid var(--m3d-acento); outline-offset: 1px; }
+    .ac-form button { border: 0; justify-content: center; text-align: center; cursor: pointer; font: inherit; justify-self: stretch; }
+    .ac-nota { font-size: .8rem; opacity: .65; margin: 0; }
+    @media (max-width: 640px) { .ac-form .ac-fila { grid-template-columns: 1fr; } }
+
+    /* Preguntas frecuentes */
+    .ac-faq { display: grid; gap: .6rem; margin-top: 1.2rem; }
+    .ac-faq details { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: .85rem 1rem; }
+    .ac-faq summary { cursor: pointer; font-weight: 600; }
+    .ac-faq p { margin: .55rem 0 0; opacity: .8; }
+
+    /* Botón flotante de WhatsApp */
+    .ac-wa { position: fixed; right: 18px; bottom: 18px; z-index: 60; width: 58px; height: 58px; border-radius: 50%;
+      background: #25d366; display: grid; place-items: center; box-shadow: 0 10px 30px rgba(0,0,0,.35); }
+    .ac-wa svg { width: 30px; height: 30px; fill: #fff; }
+  </style>
+</head>
+<body>
+
+  <div class="m3d-intro" aria-hidden="true">
+    <img src="assets/logo.svg" alt="">
+  </div>
+
+  <header class="m3d-cabecera">
+    <a class="m3d-cabecera__marca" href="#inicio">
+      <img src="assets/logo.svg" alt="Avancés Campus">
+      <span>Avancés Campus</span>
+    </a>
+    <a class="m3d-boton" href="#presupuesto">Pedir presupuesto</a>
+  </header>
+
+  <canvas id="escena3d"></canvas>
+
+  <main data-motor3d
+        data-modelo="assets/producto.glb"
+        data-acento="#39b86f"
+        data-fondo="#0e1512"
+        data-poster="assets/poster.png"
+        data-proporcion="2.3"
+        data-objetos='[
+          {"id":"logo","tipo":"logo","src":"assets/marca.svg","grosor":0.14},
+          {"id":"ambiente","tipo":"particulas","cantidad":90,"tamano":0.06}
+        ]'>
+
+    <!-- 1 · HERO -->
+    <section id="inicio" class="m3d-seccion m3d-seccion--centro m3d-seccion--hero"
+             data-3d='{"rot":[12,18,0],"pos":[0,0.95,0],"escala":0.62,"cam":[0,0,6.6],"mira":[0,0,0],"explota":0,"luz":1.1,
+                       "objetos":{"ambiente":{"opacidad":0.5}}}'>
+      <div class="m3d-hero-entra">
+        <span class="m3d-etiqueta">Taller propio en Barcelona</span>
+        <h1 class="m3d-titulo m3d-titulo--xl m3d-split">Tu avancé, cosido a la medida de tu caravana</h1>
+        <p class="m3d-texto m3d-texto--grande">Fabricamos avancés, sobreavancés y tiendas cocina en PVC Trevira con armazón de acero galvanizado. Sin tallas estándar: a tu medida.</p>
+        <div class="m3d-botones">
+          <a class="m3d-boton m3d-pulso" href="#presupuesto">Calcular mi presupuesto</a>
+          <a class="m3d-boton m3d-boton--fantasma" href="#modelos">Ver modelos</a>
+        </div>
+      </div>
+      <div class="m3d-pista">Desliza</div>
+    </section>
+
+    <!-- 2 · FABRICANTES -->
+    <section id="taller" class="m3d-seccion m3d-seccion--izq"
+             data-3d='{"rot":[6,-40,0],"pos":[1.35,0,0],"escala":0.72,"cam":[0,0.2,6],
+                       "objetos":{"logo":{"pos":[2.3,1.35,-0.8],"rot":[0,-22,0],"escala":0.32,"opacidad":1}}}'>
+      <span class="m3d-etiqueta m3d-reveal">Quiénes somos</span>
+      <h2 class="m3d-titulo m3d-reveal">Fabricantes, no revendedores</h2>
+      <p class="m3d-texto m3d-reveal">Cada avancé sale de nuestro taller de Carrer de Gavà, 67 (Barcelona). Lo cortamos y lo cosemos para tu caravana, y te lo entregamos o te lo montamos con puntualidad y seriedad.</p>
+      <p class="m3d-texto m3d-reveal">Somos un equipo joven y cualificado: tratas directamente con quien fabrica tu avancé.</p>
+    </section>
+
+    <!-- 3 · MODELOS -->
+    <section id="modelos" class="m3d-seccion m3d-seccion--der"
+             data-3d='{"rot":[4,32,0],"pos":[-1.45,0,0],"escala":0.72,"cam":[0,0,6],
+                       "objetos":{"logo":{"opacidad":0}}}'>
+      <span class="m3d-etiqueta m3d-reveal">Nuestros modelos</span>
+      <h2 class="m3d-titulo m3d-reveal">Los más vendidos</h2>
+      <div class="m3d-rejilla">
+        <article class="m3d-tarjeta m3d-reveal">
+          <h3>Avancé SCAR</h3>
+          <p>Todas las ventanas con tapa. Frontal con dos puertas desmontables que se convierten en balconera. Ventanas laterales con mosquitera.</p>
+          <span class="m3d-precio">A medida</span>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal">
+          <h3>Avancé CAMPUS</h3>
+          <p>Puerta frontal totalmente desmontable que se convierte en balconera. Ventanas con tapa, laterales desmontables y mosquiteras.</p>
+          <span class="m3d-precio">A medida</span>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal">
+          <h3>Tienda cocina</h3>
+          <p>Ventanas con cristal y tapas enrollables. Laterales y parte trasera con mosquitera.</p>
+          <span class="m3d-precio">A medida</span>
+        </article>
+        <article class="m3d-tarjeta m3d-reveal">
+          <h3>Sobreavancé y doble avancé</h3>
+          <p>También los fabricamos a medida. Cuéntanos qué necesitas y te lo presupuestamos.</p>
+          <span class="m3d-precio">A medida</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- 4 · EL DETALLE: el avancé se separa de la caravana (montaje) -->
+    <section id="detalle" class="m3d-seccion m3d-seccion--izq"
+             data-3d='{"rot":[16,-35,0],"pos":[1.4,0,0],"escala":0.66,"cam":[0,0.4,5.6],"mira":[0,0,0],"explota":0.28,"luz":1.35}'>
+      <span class="m3d-etiqueta m3d-reveal">Cómo está hecho</span>
+      <h2 class="m3d-titulo m3d-reveal">Hecho para durar</h2>
+      <ol class="m3d-puntos">
+        <li class="m3d-reveal"><strong>PVC Trevira</strong><span>Resistente y de fácil limpieza.</span></li>
+        <li class="m3d-reveal"><strong>Acero galvanizado de 25 mm</strong><span>Un armazón firme para el avancé.</span></li>
+        <li class="m3d-reveal"><strong>Tapas y mosquiteras</strong><span>Abres o cierras ventanas según el tiempo, sin dejar pasar los mosquitos.</span></li>
+        <li class="m3d-reveal"><strong>Puertas desmontables</strong><span>El frontal se convierte en balconera.</span></li>
+      </ol>
+    </section>
+
+    <!-- 5 · CÓMO SE PIDE -->
+    <section id="como" class="m3d-seccion m3d-seccion--der"
+             data-3d='{"rot":[6,-150,0],"pos":[-1.4,0,0],"escala":0.72,"cam":[0,0.1,6],"mira":[0,0,0],"explota":0,"luz":1.1}'>
+      <span class="m3d-etiqueta m3d-reveal">Así de fácil</span>
+      <h2 class="m3d-titulo m3d-reveal">De tu caravana a tu avancé en cuatro pasos</h2>
+      <ol class="ac-pasos">
+        <li class="m3d-reveal"><div><strong>Nos escribes</strong><span>Marca y modelo de tu caravana, y el modelo de avancé que te interesa.</span></div></li>
+        <li class="m3d-reveal"><div><strong>Te pasamos presupuesto</strong><span>A medida, sin compromiso.</span></div></li>
+        <li class="m3d-reveal"><div><strong>Lo fabricamos</strong><span>En nuestro taller de Barcelona.</span></div></li>
+        <li class="m3d-reveal"><div><strong>Entrega o montaje</strong><span>Con puntualidad, donde tengas la caravana.</span></div></li>
+      </ol>
+    </section>
+
+    <!-- 6 · OPINIONES (literales de su web actual) -->
+    <section id="opiniones" class="m3d-seccion m3d-seccion--izq"
+             data-3d='{"rot":[4,-210,0],"pos":[1.35,0.05,0],"escala":0.72,"cam":[0,0,6],
+                       "objetos":{"logo":{"pos":[2.3,1.35,-0.6],"rot":[0,-18,0],"escala":0.3,"opacidad":1}}}'>
+      <span class="m3d-etiqueta m3d-reveal">Lo que dicen nuestros clientes</span>
+      <h2 class="m3d-titulo m3d-reveal">Campistas contentos</h2>
+      <div class="m3d-citas">
+        <blockquote class="m3d-cita m3d-reveal"><p>«Todo muy profesional, chicos muy responsables y amables, volveré a encargar otro trabajo con ellos.»</p><cite>Gloria Teresa · Barcelona</cite></blockquote>
+        <blockquote class="m3d-cita m3d-reveal"><p>«Gracias por la puntualidad y la seriedad con la que trabajan.»</p><cite>Lucía · Barcelona</cite></blockquote>
+        <blockquote class="m3d-cita m3d-reveal"><p>«Muy contento con el trabajo realizado, el material es muy bueno.»</p><cite>Carlos · Barcelona</cite></blockquote>
+      </div>
+      <div class="m3d-botones m3d-reveal">
+        <a class="m3d-boton m3d-boton--fantasma" href="https://g.page/r/CXSNRuQOZRI6EBE/review" target="_blank" rel="noopener">Déjanos tu reseña en Google</a>
+      </div>
+    </section>
+
+    <!-- 7 · PRESUPUESTO (embudo principal → WhatsApp) -->
+    <section id="presupuesto" class="m3d-seccion m3d-seccion--der"
+             data-3d='{"rot":[8,-300,0],"pos":[-1.45,0.1,0],"escala":0.7,"cam":[0,0.2,6.2],
+                       "objetos":{"logo":{"opacidad":0}}}'>
+      <span class="m3d-etiqueta m3d-reveal">Presupuesto en 1 minuto</span>
+      <h2 class="m3d-titulo m3d-reveal">¿Cuánto costaría el tuyo?</h2>
+      <p class="m3d-texto m3d-reveal">Rellena estos datos y se abre WhatsApp con tu mensaje listo. Te respondemos con el presupuesto.</p>
+      <form class="ac-form m3d-reveal" id="formPresupuesto">
+        <div class="ac-fila">
+          <label>Qué necesitas
+            <select name="producto" required>
+              <option>Avancé SCAR</option>
+              <option>Avancé CAMPUS</option>
+              <option>Tienda cocina</option>
+              <option>Sobreavancé / doble avancé</option>
+              <option>Aún no lo sé, asesoradme</option>
+            </select>
+          </label>
+          <label>Uso de la caravana
+            <select name="uso">
+              <option>Fija en un camping</option>
+              <option>Viajo con ella</option>
+            </select>
+          </label>
+        </div>
+        <div class="ac-fila">
+          <label>Marca y modelo de caravana
+            <input name="caravana" placeholder="Ej.: Caravelair Antares 400" required>
+          </label>
+          <label>Medida del carril (si la sabes)
+            <input name="medida" placeholder="Ej.: 925 cm">
+          </label>
+        </div>
+        <div class="ac-fila">
+          <label>Camping o población
+            <input name="lugar" placeholder="Ej.: Camping en Tarragona">
+          </label>
+          <label>Tu nombre
+            <input name="nombre" placeholder="Nombre" required>
+          </label>
+        </div>
+        <button class="m3d-boton m3d-pulso" type="submit">Enviar por WhatsApp</button>
+        <a id="abrirWa" class="m3d-boton m3d-boton--fantasma" hidden target="_blank" rel="noopener" style="justify-content:center">Si no se abrió, pulsa aquí para abrir WhatsApp</a>
+        <p class="ac-nota">No guardamos tus datos: el mensaje se envía desde tu propio WhatsApp.</p>
+      </form>
+    </section>
+
+    <!-- 8 · DÓNDE ESTAMOS + FAQ -->
+    <section id="contacto" class="m3d-seccion m3d-seccion--izq"
+             data-3d='{"rot":[6,-380,0],"pos":[1.3,-0.1,0],"escala":0.66,"cam":[0,0.4,6.4],"mira":[0,0,0],"luz":1.2,
+                       "objetos":{"logo":{"pos":[2.3,1.3,-0.6],"rot":[0,-18,0],"escala":0.3,"opacidad":1},"ambiente":{"opacidad":0.45}}}'>
+      <span class="m3d-etiqueta m3d-reveal">Dónde estamos</span>
+      <h2 class="m3d-titulo m3d-reveal">Ven a ver el taller</h2>
+      <div class="m3d-contacto m3d-reveal">
+        <dl>
+          <div><dt>Dirección</dt><dd>Carrer de Gavà, 67 · 08014 Barcelona</dd></div>
+          <div><dt>WhatsApp</dt><dd><a href="https://wa.me/34632083624">632 083 624</a></dd></div>
+        </dl>
+      </div>
+      <div class="m3d-botones m3d-reveal">
+        <a class="m3d-boton" href="https://www.google.com/maps/search/?api=1&query=Carrer+de+Gav%C3%A0+67+08014+Barcelona" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="m3d-boton m3d-boton--fantasma" href="https://wa.me/34632083624">Escribir</a>
+      </div>
+      <div class="ac-faq m3d-reveal">
+        <details><summary>¿El avancé se adapta a mi caravana?</summary><p>Sí. Lo fabricamos a la medida de tu caravana en nuestro taller.</p></details>
+        <details><summary>¿De qué material es?</summary><p>PVC Trevira, de fácil limpieza, con armazón de acero galvanizado de 25 mm.</p></details>
+        <details><summary>¿Lo montáis vosotros?</summary><p>Sí: te lo entregamos o te lo montamos con puntualidad.</p></details>
+        <details><summary>¿Cuánto cuesta?</summary><p>Depende del modelo y de la medida. Usa el formulario de presupuesto o escríbenos por WhatsApp.</p></details>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="m3d-pie">
+    <nav>
+      <a href="#modelos">Modelos</a>
+      <a href="#presupuesto">Presupuesto</a>
+      <a href="https://www.instagram.com/avancescampus/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.facebook.com/CampusAvance" target="_blank" rel="noopener">Facebook</a>
+    </nav>
+    <div>Avancés Campus · Carrer de Gavà, 67 · 08014 Barcelona · WhatsApp 632 083 624</div>
+  </footer>
+
+  <a class="ac-wa" href="https://wa.me/34632083624" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8s-.4-.1-.6.1-.7.8-.8 1-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.9 11.9 0 0 0 4.6 4c1.7.7 2.4.8 3.2.7a2.8 2.8 0 0 0 1.8-1.3 2.3 2.3 0 0 0 .2-1.3c-.1-.1-.3-.2-.5-.3Z"/></svg>
+  </a>
+
+  <script>
+    document.getElementById('formPresupuesto').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var d = new FormData(this);
+      var t = 'Hola, Avancés Campus. Soy ' + d.get('nombre') + '.\n' +
+              'Me interesa: ' + d.get('producto') + '\n' +
+              'Caravana: ' + d.get('caravana') + '\n' +
+              (d.get('medida') ? 'Medida del carril: ' + d.get('medida') + '\n' : '') +
+              'Uso: ' + d.get('uso') + '\n' +
+              (d.get('lugar') ? 'Camping / población: ' + d.get('lugar') + '\n' : '') +
+              '¿Me pasáis presupuesto?';
+      var url = 'https://wa.me/34632083624?text=' + encodeURIComponent(t);
+      var v = null; try { v = window.open(url, '_blank'); } catch (err) {}
+      var a = document.getElementById('abrirWa'); a.href = url; a.hidden = false;
+      if (!v) a.focus();
+    });
+  </script>
+  <script type="module" src="motor-3d/motor3d.js"></script>
+</body>
+</html>
